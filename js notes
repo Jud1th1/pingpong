@@ -1,0 +1,22 @@
+
+//Important to Know: 
+//Our game will run inside of Update Loop so every frame that passes will call a function that updates the position and logic of our game
+//We will create seperate classes so they are easier to work with 
+
+//1. Create a Ball Js that the ball will pass through 
+//2. Import Ball js to Script Js
+//3. Add a time function to calculate how much time has passed since the start of the game  and call it 
+    //note of caution do not use setInterval here beacuse it may not be accurate
+    //convert time to delta
+    //check for lastTime null statement in the beginning of programming (because there will be no last time) - add if else
+//4. Update our Ball js
+    //create a helper function to get position, direction and velocity
+    //we also need a function for randomNumberBetween or console will flag this as an error when testing our direction and velocity 
+    //a function to allow ball to bounce from the top and bottom of the screen 
+//5. Add Paddle JS
+    //No update function is needed for Player beacuse the y axis is the same as the mouse movement 
+    //Add an eventListener instead here (in script.js)
+    //Use a getter and setter in Paddle.js for our position 
+    //FOR THE COMPUTER YOU NEED TO USE THE UPDATE FUNCTION 
+//6. add lose code to handle player lose, reset and if player scores or computer scores
+//7. Figure out way to fix the code so the ball bounces of the paddle in Ball js 
