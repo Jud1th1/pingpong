@@ -33,7 +33,20 @@
   .paddle.right {
     right: 1vw;
   }
+
+  h1, h2, h3{
+    color: white;
+    text-align: center;
+  }
+
+  hr {
+    width: 60%;
+  }
   
+  h3{
+    text-transform: uppercase;
+  }
+
   .ball {
     --x: 50;
     --y: 50;
@@ -68,3 +81,19 @@
     text-align: right;
     border-right: .5vh solid var(--foreground-color);
   }
+
+  /* Remove below if JS will not work
+  .game-over-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1rem;
+    background-color: white;
+    border: 1px solid black;
+    z-index: 100;
+  }
+  
+  .game-over-message button {
+    margin-top: 1rem;
+  }*/

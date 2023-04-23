@@ -13,7 +13,7 @@ function update(time) {
   if (lastTime != null) {
     const delta = time - lastTime
         // Update code
-        //ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()]) //pass in so ball bounces off paddle 
+        ball.update(delta, [playerPaddle.rect(), computerPaddle.rect()]) //pass in so ball bounces off paddle 
         //Computer paddle update function 
         computerPaddle.update(delta, ball.y)
         

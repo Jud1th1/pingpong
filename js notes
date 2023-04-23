@@ -20,3 +20,66 @@
     //FOR THE COMPUTER YOU NEED TO USE THE UPDATE FUNCTION 
 //6. add lose code to handle player lose, reset and if player scores or computer scores
 //7. Figure out way to fix the code so the ball bounces of the paddle in Ball js 
+
+
+/*Attempting to take it step further I want to 
+    a way for the game to end after the player or the
+    computer reaches 11points and I want to add an alert 
+    to signal to the player that they lose or won*/
+
+//8. Modify handleLose function to check if either player has reached score of 11
+function handleLose() {
+  const rect = ball.rect()
+  if (rect.right >= window.innerWidth) {
+    playerScoreElem.textContent = parseInt(playerScoreElem.textContent) + 1 //player has scored
+    if (parseInt(playerScoreElem.textContent) === 11) {
+      showGameOverMessage("You won!")
+      return
+    }
+  } else {
+    computerScoreElem.textContent = parseInt(computerScoreElem.textContent) + 1 //computer has scored
+    if (parseInt(computerScoreElem.textContent) === 11) {
+      showGameOverMessage("You lost!")
+      return
+    }
+  }
+  ball.reset()
+  computerPaddle.reset()
+}
+
+//Add a new function showGameOverMessage() to show the pop-up message:
+javascript
+Copy code
+function showGameOverMessage(message) {
+  const gameOverMessageElem = document.createElement("div")
+  gameOverMessageElem.className = "game-over-message"
+  gameOverMessageElem.textContent = message
+  const restartButton = document.createElement("button")
+  restartButton.textContent = "Restart"
+  restartButton.addEventListener("click", () => {
+    gameOverMessageElem.remove()
+    playerScoreElem.textContent = "0"
+    computerScoreElem.textContent = "0"
+    lastTime = null
+    window.requestAnimationFrame(update)
+  })
+  gameOverMessageElem.appendChild(restartButton)
+  document.body.appendChild(gameOverMessageElem)
+}
+
+//Remove the event listener for the player paddle movement once the game is over:
+javascript
+Copy code
+function showGameOverMessage(message) {
+  // ...
+  document.body.appendChild(gameOverMessageElem)
+  document.removeEventListener("mousemove", onPlayerPaddleMouseMove)
+}
+
+function onPlayerPaddleMouseMove(e) {
+  playerPaddle.position = (e.y / window.innerHeight) * 100
+}
+document.addEventListener("mousemove", onPlayerPaddleMouseMove)
+
+
+//Bugs- The pop up is there but the game will no longer play or if it plays the player wins in less than 2 seconds. :( 
